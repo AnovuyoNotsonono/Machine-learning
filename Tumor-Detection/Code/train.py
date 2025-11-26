@@ -14,10 +14,10 @@ train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=20, horizontal
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-train_datagenerator = train_datagen.flow_from_directory('train/',target_size=(50,50), batch_size=32,
+train_datagenerator = train_datagen.flow_from_directory('../train/',target_size=(50,50), batch_size=32,
                                                        class_mode='binary')
 
-test_datagenerator = test_datagen.flow_from_directory('test/',target_size=(50,50), batch_size=32,
+test_datagenerator = test_datagen.flow_from_directory('../test/',target_size=(50,50), batch_size=32,
                                                       class_mode='binary')
 
 # Apply EarlyStopping regularization to stop model from ovefitting
