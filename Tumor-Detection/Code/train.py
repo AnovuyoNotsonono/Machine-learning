@@ -4,7 +4,7 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping
 from model import define_model
-
+import pickle
 
 # Specifying the rules and parameters
 
@@ -34,3 +34,12 @@ model = define_model()
 history = model.fit(train_datagenerator, epochs=100, validation_data=test_datagenerator, callbacks=[early_stop])
 
 model.save("Tumor_detector.keras")
+
+# Save history object to a file so it can be imported later
+
+with open("history.pkl", "wb") as f:
+    pickle.dump(history.history, f)
+
+# Optional: return history if running from another script
+def get_training_history():
+    return history.history
