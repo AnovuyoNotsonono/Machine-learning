@@ -1,16 +1,18 @@
-Tumor Detection from Breast Histopathology Images
+# **Tumor Detection from Breast Histopathology Images**
 
 A Convolutional Neural Network (CNN) for detecting breast cancer from histopathology slides
 
-📌 Project Overview
+📌 **Project Overview**
 
 This project implements a deep-learning pipeline for detecting the presence of breast tumors using histopathology image patches. A Convolutional Neural Network (CNN) was trained using the Breast Histopathology Images dataset from Kaggle:
 
-🔗 Dataset link: https://www.kaggle.com/datasets/alaminbhuyan/breast-histopathology-images
+🔗 **Dataset link**: https://www.kaggle.com/datasets/alaminbhuyan/breast-histopathology-images
 
 The final model is saved as Tumor_detector.keras, and can be used directly for inference (prediction) without retraining.
 
 The entire source code is located inside the Code/ directory.
+
+**📁 Repository Structure**
 
 ```bash 
 Tumor-Detection/
@@ -41,19 +43,19 @@ Tumor-Detection/
 └── README.md
 ```
 
-🧪 Dataset Preparation (Preprocessing)
+**🧪 Dataset Preparation (Preprocessing)**
 
 Before training, you must prepare your dataset.
 
-1. Download the dataset from Kaggle.
+**1.** Download the dataset from Kaggle.
 
-2. Create the directory:
+**2.** Create the directory:
 
 ```swift
 Tumor-Detection/Original_dataset/
 ```
 
-3. Place the extracted Kaggle files exactly as follows:
+**3.** Place the extracted Kaggle files exactly as follows:
 
 ```markdown
 Original_dataset/
@@ -71,54 +73,54 @@ python preprocessing.py
 
 This will:
 
-. Create train/, test/, and validate/ datasets.
+- Create train/, test/, and validate/ datasets.
 
-. Balance dataset sizes according to your rules.
+- Balance dataset sizes according to your rules.
 
-. Store all output inside the top-level /data/ directory.
+- Store all output inside the top-level /data/ directory.
 
 
-Model Definition (model.py)
+**Model Definition (model.py)**
 
-. Contains the architecture of the CNN.
+- Contains the architecture of the CNN.
 
-. Must be imported where the training will be done:
+- Must be imported where the training will be done:
 
 ```python
 from model import define_model
 model = define_model()
 ```
 
-Training the Model (train.py)
+**Training the Model (train.py)**
 
 This script:
 
-. Loads the model from model.py
+- Loads the model from model.py
 
-. Trains it on the processed dataset
+- Trains it on the processed dataset
 
 Saves:
 
-. Tumor_detector.keras inside the /model/ directory
+- Tumor_detector.keras inside the /model/ directory
 
-. history.pkl containing training history
+- history.pkl containing training history
 
-Important: train.py must be run from the same directory as model.py
+**Important:** train.py must be run from the same directory as model.py
 
-To train:
+*To train:*
 
 ```bash
 cd Code
 python train.py
 ```
 
-Plotting Training Curves (plots.py)
+**Plotting Training Curves (plots.py)**
 
-. Uses the saved history.pkl file from training.
+- Uses the saved history.pkl file from training.
 
-. Generates accuracy.png and loss.png
+- Generates accuracy.png and loss.png
 
-. Saves them automatically into:
+- Saves them automatically into:
  ```bash
  ../plots/
 ```
@@ -128,20 +130,20 @@ To generate plots:
 cd Code
 python plots.py
 ```
-Running Inference (Prediction)
+**🔍 Running Inference (Prediction)**
 
 The inference script loads the trained model and predicts whether a tumor is present in a single image.
 
-Usage:
+**Usage:**
 ```bash
 cd Code
 python inference.py path/to/image.png
 ```
-Output Interpretation:
+**Output Interpretation:**
 
-. "Tumorous" → Tumor present
+- **"Tumorous"** → Tumor present
 
-. "Negative" → Tumor absent
+- **"Negative"** → Tumor absent
 
 Example:
 
@@ -149,15 +151,15 @@ Example:
 python inference.py ../example_images/sample.png
 ```
 
-For Users Who ONLY Want to Predict
+**For Users Who ONLY Want to Predict**
 
 They only need:
 
-. Code/inference.py
+- Code/inference.py
 
-. model/Tumor_detector.keras
+- model/Tumor_detector.keras
 
-. requirements.txt
+- requirements.txt
 
 Steps:
 
@@ -169,24 +171,24 @@ python Code/inference.py path/to/image
 ```
 No training required.
 
-🔁 For Users Who Want to Retrain the Model
+**🔁 For Users Who Want to Retrain the Model**
 
 Steps:
 
-1. Download dataset(recommended:from Kaggle)
+**1.** Download dataset(recommended:from Kaggle)
 
-2. Place inside /Original_dataset/ as described
+**2.** Place inside /Original_dataset/ as described
  
-3. Run:
+**3.** Run:
 
 ```bash
 python Code/preprocessing.py
 python Code/train.py
 python Code/plots.py
 ```
-4. Use the updated model for inference.
+**4.** Use the updated model for inference.
 
-Installation
+**Installation**
 
 Install dependencies:
 
@@ -195,16 +197,16 @@ pip install -r requirements.txt
 ```
 (You may use a Conda environment if preferred.)
 
-🧾 Requirements
+**🧾 Requirements**
 
 All required libraries are listed in requirements.txt.
 This project was developed inside a Conda environment, but standard pip installation works as well.
 
-📓 Notebooks
+**📓 Notebooks**
 
 The Notebooks/ directory contains an exploratory Jupyter notebook with raw, uncleaned code used during early development. It can be used for quick testing or experimentation.
 
 
-Contact
+**Contact**
 
 For questions or contributions, feel free to reach out or open an issue.
