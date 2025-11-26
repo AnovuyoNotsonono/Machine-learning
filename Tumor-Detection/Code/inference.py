@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
@@ -16,3 +18,12 @@ def predict_image(model, image_path):
         print("Predicted: Tumorous")
     else:
         print("Predicted: Negative")
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1:
+        image_path = sys.argv[1]
+        predict_image(model, image_path)
+    else:
+        print("Please provide an image path as argument")
+
