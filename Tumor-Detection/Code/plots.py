@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
+from train import get_training_history 
 import matplotlib.pyplot as plt
 
+history = get_training_history()
 def plot_training_history(history, save_plots=False, save_dir="../plots/"):
     """
     Plots training and validation accuracy and loss from a Keras history object.
@@ -18,8 +20,9 @@ def plot_training_history(history, save_plots=False, save_dir="../plots/"):
 
     # Plot accuracy
     plt.figure()
-    plt.plot(history.history['accuracy'], marker='o')
-    plt.plot(history.history['val_accuracy'], marker='o')
+
+    plt.plot(history['accuracy'], marker='o')
+    plt.plot(history['val_accuracy'], marker='o')
     plt.title("Model Accuracy")
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy")
@@ -31,8 +34,10 @@ def plot_training_history(history, save_plots=False, save_dir="../plots/"):
 
     # Plot loss
     plt.figure()
-    plt.plot(history.history['loss'], marker='o')
-    plt.plot(history.history['val_loss'], marker='o')
+
+    plt.plot(history['loss'], marker='o')
+    plt.plot(history['val_loss'], marker='o')
+    
     plt.title("Model Loss")
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
@@ -42,3 +47,6 @@ def plot_training_history(history, save_plots=False, save_dir="../plots/"):
         plt.savefig(f"{save_dir}/loss.png")
     plt.show()
 
+
+if __name__ == "__main__":
+    plot_training_history(history)
