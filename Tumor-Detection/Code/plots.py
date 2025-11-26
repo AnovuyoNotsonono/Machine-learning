@@ -2,6 +2,7 @@
 
 from train import get_training_history 
 import matplotlib.pyplot as plt
+import os
 
 history = get_training_history()
 def plot_training_history(history, save_plots=False, save_dir="../plots/"):
@@ -13,9 +14,12 @@ def plot_training_history(history, save_plots=False, save_dir="../plots/"):
         save_plots (bool): If True, saves the plots as PNG files.
         save_dir (str): Directory to save the plots (if save_plots=True).
     """
-    # Create save directory if needed
+    # Make path relative to script location
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    save_dir = os.path.abspath(os.path.join(script_dir, save_dir))
+
+    # Create directory if saving
     if save_plots:
-        import os
         os.makedirs(save_dir, exist_ok=True)
 
     # Plot accuracy
@@ -43,10 +47,12 @@ def plot_training_history(history, save_plots=False, save_dir="../plots/"):
     plt.ylabel("Loss")
     plt.legend(["Train", "Validation"])
     plt.grid(True)
+    
     if save_plots:
-        plt.savefig(f"{save_dir}/loss.png")
-    plt.show()
+        plt.savefig(os.path.join(save_dir, "loss.png"))
+    plt.close()
 
+    print(f"Plots saved to: {save_dir}" if save_plots else "Plots displayed.")
 
 if __name__ == "__main__":
-    plot_training_history(history)
+    plot_training_history(history, save_plots=True)
