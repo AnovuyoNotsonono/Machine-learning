@@ -197,12 +197,6 @@ pip install -r requirements.txt
 ```
 (You may use a Conda environment if preferred.)
 
-**Model Performance:**
-- Training Accuracy: 87.3%
-- Validation Accuracy: 86.2%
-- Validation Loss: 0.35
-- Early stopping used to prevent overfitting
-
 **🧾 Requirements**
 
 All required libraries are listed in requirements.txt.
