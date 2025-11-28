@@ -6,7 +6,7 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 
-model = load_model("Tumor_detector.keras", compile=False)
+model = load_model("../model/Tumor_detector.keras", compile=False)
 
 def predict_image(model, image_path):
     img = image.load_img(image_path, target_size=(50, 50))

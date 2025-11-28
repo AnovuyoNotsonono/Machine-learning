@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-
+import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping
 from model import define_model
 import pickle
-
+SEED = 42 
+tf.random.set_seed(SEED)
 
 def get_training_history():
     """Optional function to load previously saved history inside another function"""
