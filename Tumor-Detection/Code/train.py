@@ -22,10 +22,10 @@ if __name__ == "__main__":
 
     test_datagen = ImageDataGenerator(rescale=1./255)
 
-    train_datagenerator = train_datagen.flow_from_directory('../train/',target_size=(50,50), batch_size=32,
+    train_datagenerator = train_datagen.flow_from_directory('../data/train/',target_size=(50,50), batch_size=32,
                                                        class_mode='binary')
 
-    test_datagenerator = test_datagen.flow_from_directory('../test/',target_size=(50,50), batch_size=32,
+    test_datagenerator = test_datagen.flow_from_directory('../data/test/',target_size=(50,50), batch_size=32,
                                                       class_mode='binary')
 
     # Apply EarlyStopping regularization to stop model from ovefitting
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     #Train the model
     history = model.fit(train_datagenerator, epochs=100, validation_data=test_datagenerator, callbacks=[early_stop])
    #Save the model
-    model.save("Tumor_detector.keras")
+    model.save("../model/Tumor_detector.keras")
 
   # Save history object to a file so it can be imported later
 
